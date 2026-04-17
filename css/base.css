@@ -1,0 +1,66 @@
+/* ═══════════════════════════════════════════════
+   base.css — Reset + Scrollbar + Utility Classes
+   نظام سندريلا v4
+   ═══════════════════════════════════════════════ */
+
+/* ── Reset ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  font-family: 'Cairo', sans-serif;
+  background: var(--bg);
+  color: var(--t1);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--br2); border-radius: 4px; }
+
+/* ── Screens ── */
+.screen        { display: none; flex-direction: column; height: 100vh; overflow: hidden; }
+.screen.active { display: flex; }
+
+/* ── Tabs ── */
+.tab        { display: none; }
+.tab.active { display: block; }
+
+/* ── Page Header ── */
+.ph         { margin-bottom: 18px; }
+.ph h2      { font-size: 18px; font-weight: 900; }
+.ph p       { font-size: 12px; color: var(--t2); margin-top: 3px; }
+.ph.fb      { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+/* ── Spacing Utilities ── */
+.mb12 { margin-bottom: 12px; }
+.mb16 { margin-bottom: 16px; }
+.mt8  { margin-top: 8px; }
+.mt12 { margin-top: 12px; }
+.divider { height: 1px; background: rgba(255,255,255,.06); margin: 12px 0; }
+
+/* ── Flex Utilities ── */
+.flex { display: flex; }
+.g8   { gap: 8px; }
+.g10  { gap: 10px; }
+.g12  { gap: 12px; }
+
+/* ── Text Color Utilities ── */
+.tgrn { color: var(--green); }
+.tred { color: var(--red); }
+.tpur { color: var(--purple); }
+.tgld { color: var(--gold); }
+.tcyn { color: var(--cyan); }
+.bold { font-weight: 700; }
+.gnum { color: var(--gold); font-weight: 700; }
+.muted { color: var(--t3); font-size: 12px; }
+
+/* ── Icon size ── */
+.ico { font-size: 15px; }
+
+/* ── Empty State ── */
+.empty   { text-align: center; padding: 30px 20px; color: var(--t3); }
+.ei      { font-size: 32px; margin-bottom: 8px; }
+.empty p { font-size: 12px; }
