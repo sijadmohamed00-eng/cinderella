@@ -1,14 +1,14 @@
 // ═══ firebase.js ═══
 // ═══ FIREBASE REALTIME SYNC ═══
-// ═══ FIREBASE CONFIG (REAL - cinderella-d6fb9) ═══
+// ═══ FIREBASE CONFIG (REAL - call-centar-554a8) ═══
 const _REAL_FB_CFG={
-  apiKey:"AIzaSyCwgMofJnj7lcSZQ5swhr7jWoqG0UZ48W0",
-  authDomain:"cinderella-d6fb9.firebaseapp.com",
-  databaseURL:"https://cinderella-d6fb9-default-rtdb.firebaseio.com",
-  projectId:"cinderella-d6fb9",
-  storageBucket:"cinderella-d6fb9.firebasestorage.app",
-  messagingSenderId:"596861181608",
-  appId:"1:596861181608:web:044de1a08ae5e51ba06c9d",
+  apiKey:"AIzaSyBRUWmt_Oe1nI9SWSbq_GwXGFMgXALWlLM",
+  authDomain:"call-centar-554a8.firebaseapp.com",
+  databaseURL:"https://call-centar-554a8-default-rtdb.firebaseio.com",
+  projectId:"call-centar-554a8",
+  storageBucket:"call-centar-554a8.firebasestorage.app",
+  messagingSenderId:"370604613719",
+  appId:"1:370604613719:web:325db30f3d9b8a666c0312",
   measurementId:"G-YXM98JS1Y2"
 };
 
@@ -77,24 +77,11 @@ function _setSyncUI(state, label){
 function _mergeOnConnect(){
   if(!fbDB)return;
   // Pull ALL cloud data first, then decide
-  // Timeout safety: if Firebase takes too long, fallback to local
-  let settled=false;
-  const timeout=setTimeout(()=>{
-    if(settled)return;
-    settled=true;
-    console.warn('Firebase timeout — using local data');
-    _ensureLocalData();
-  },5000);
-
   fbDB.ref('ccs').once('value').then(snap=>{
-    if(settled)return;
-    settled=true;
-    clearTimeout(timeout);
     const cloud=snap.val()||{};
     const cloudEmpty=!cloud.emps||!Array.isArray(cloud.emps)||cloud.emps.length===0;
     if(cloudEmpty){
-      // Cloud is empty → ensure local data exists, then push up
-      _ensureLocalData();
+      // Cloud is empty → push local data up
       _pushAllToCloud();
     } else {
       // Cloud has data → pull it locally (cloud wins)
@@ -111,26 +98,7 @@ function _mergeOnConnect(){
         }catch(e){}
       },300);
     }
-  }).catch(e=>{
-    if(settled)return;
-    settled=true;
-    clearTimeout(timeout);
-    console.error('merge err:',e);
-    // On error: make sure local data is initialized
-    _ensureLocalData();
-  });
-}
-
-// Ensure initData has run and local storage has employees
-function _ensureLocalData(){
-  try{
-    const emps=DB.get('emps');
-    if(!emps||!Array.isArray(emps)||emps.length===0){
-      initData();
-    }
-  }catch(e){
-    try{initData();}catch(e2){}
-  }
+  }).catch(e=>console.error('merge err:',e));
 }
 
 function _pushAllToCloud(){
