@@ -208,5 +208,3 @@ function _syncToCloud(key, value){
     });
 }
 // ═══ END FIREBASE ═══
-
-
