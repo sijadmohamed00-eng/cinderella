@@ -8,4 +8,4 @@ let SHIFTS=Object.assign({},SHIFTS_DEFAULT);
 let CU=null,DID=null,QSID=null,gpsOk=false,uLat=null,uLng=null;
 let salChartI=null,attChartI=null,autoTimers=[],viewingReportId=null;
 let SA_MODE=false,CU_PERMS=null;
-function getWorkLoc(){return DB.get('workLoc')||{lat:33.3574598,lng:44.4246846,rad:100}}
+function getWorkLoc(){return DB.get('workLoc')||{lat:33.3089,lng:44.4425,rad:100}}
