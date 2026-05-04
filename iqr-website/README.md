@@ -1,23 +1,47 @@
-# IQR Website + Dashboard
+# IQR — الحزمة الكاملة
 
-موقع + داشبورد IQR لإدارة المطاعم في العراق
+## محتويات الحزمة
 
-## الصفحات
-- `/` → Landing Page
-- `/dashboard` → لوحة التحكم
+### 📁 website/
+- **IQRSite.jsx** — الصفحة الرئيسية المحدّثة
+  - قسم التحديات (6 كاردات بشبكة 3 أعمدة)
+  - قسم الخدمات (19 خدمة على 4 محاور)
+  - روابط الفوتر مصلّحة
 
-## إعدادات Cloudflare Pages
-- Framework: Next.js
-- Build command: `npm run build`
-- Output dir: `.next`
-- Node version: 18
+### 📁 scraper/
+- **scraper.js** — يسحب بيانات INVO لـ Firebase
+- **package.json** — تبعيات المشروع
 
-## تشغيل محلي
-```bash
+### 📁 dashboard/
+- **CinderellaDashboard.jsx** — داشبورد سندريلا الحي
+- **page.js** — صفحة Next.js للرابط /dashboard/cinderlla
+
+---
+
+## طريقة التركيب
+
+### 1. website/IQRSite.jsx
+انسخ لـ: components/IQRSite.jsx (استبدل الموجود)
+
+### 2. scraper/ (على جهازك)
+```powershell
+cd scraper
 npm install
-npm run dev
+node scraper.js
 ```
 
-## الملفات الرئيسية
-- `components/IQRSite.jsx` — Landing Page
-- `components/IQRDashboard.jsx` — Dashboard
+### 3. dashboard/ (في مشروع iqr-website)
+```
+أولاً: npm install firebase
+
+أنشئ مجلد: app/dashboard/cinderlla/
+انسخ:
+  CinderellaDashboard.jsx → app/dashboard/cinderlla/CinderellaDashboard.jsx
+  page.js                 → app/dashboard/cinderlla/page.js
+```
+
+---
+
+## الروابط بعد الرفع
+- iqrhq.me/ → الصفحة الرئيسية المحدّثة
+- iqrhq.me/dashboard/cinderlla → داشبورد سندريلا

@@ -1,0 +1,13 @@
+{
+  "name": "iqr-cinderella-bridge",
+  "version": "1.0.0",
+  "description": "IQR Bridge — سندريلا INVO → Firebase",
+  "main": "scraper.js",
+  "scripts": {
+    "start": "node scraper.js",
+    "dev": "node scraper.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}
